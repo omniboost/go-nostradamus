@@ -3,6 +3,7 @@ package nostradamus
 import (
 	"net/http"
 	"net/url"
+	"time"
 
 	"github.com/gocarina/gocsv"
 )
@@ -32,6 +33,8 @@ func (c *Client) NewHoursGetQueryParams() *HoursGetQueryParams {
 }
 
 type HoursGetQueryParams struct {
+	Start time.Time `schema:"start"`
+	End   time.Time `schema:"end"`
 }
 
 func (p HoursGetQueryParams) ToURLValues() (url.Values, error) {

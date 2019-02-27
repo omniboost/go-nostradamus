@@ -5,6 +5,7 @@ import (
 	"net/url"
 	"reflect"
 	"strconv"
+	"time"
 
 	null "gopkg.in/guregu/null.v3"
 
@@ -74,6 +75,14 @@ func newSchemaEncoder() *schema.Encoder {
 	// 	return ""
 	// }
 
+	encodeTime := func(v reflect.Value) string {
+		t, _ := v.Interface().(time.Time)
+		if t.IsZero() {
+			return ""
+		}
+		return t.Format("2006-01-02")
+	}
+
 	encodeNullFloat := func(v reflect.Value) string {
 		nullFloat, _ := v.Interface().(null.Float)
 		if nullFloat.IsZero() {
@@ -90,7 +99,7 @@ func newSchemaEncoder() *schema.Encoder {
 		return strconv.FormatBool(nullBool.Bool)
 	}
 
-	// encoder.RegisterEncoder(Date{}, encodeSchemaMarshaler)
+	encoder.RegisterEncoder(time.Time{}, encodeTime)
 	encoder.RegisterEncoder(null.Float{}, encodeNullFloat)
 	encoder.RegisterEncoder(null.Bool{}, encodeNullBool)
 	return encoder
