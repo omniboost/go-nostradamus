@@ -205,12 +205,12 @@ func (c *Client) Do(req *http.Request, responseBody interface{}) (*http.Response
 		return nil, err
 	}
 
-	// close body io.Reader
-	defer func() {
-		if rerr := httpResp.Body.Close(); err == nil {
-			err = rerr
-		}
-	}()
+	// don't close body io.Reader: it will be used later by the csv parser
+	// defer func() {
+	// 	if rerr := httpResp.Body.Close(); err == nil {
+	// 		err = rerr
+	// 	}
+	// }()
 
 	if c.debug == true {
 		dump, _ := httputil.DumpResponse(httpResp, true)
