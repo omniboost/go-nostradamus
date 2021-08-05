@@ -3,9 +3,11 @@ package nostradamus
 import (
 	"bytes"
 	"context"
+	"encoding/csv"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -15,6 +17,7 @@ import (
 	"strings"
 
 	"github.com/alecthomas/template"
+	"github.com/gocarina/gocsv"
 )
 
 const (
@@ -313,4 +316,12 @@ type ErrorResponse struct {
 
 func (r *ErrorResponse) Error() string {
 	return fmt.Sprint("err")
+}
+
+func init() {
+	gocsv.SetCSVReader(func(in io.Reader) gocsv.CSVReader {
+		r := csv.NewReader(in)
+		r.FieldsPerRecord = -1
+		return r
+	})
 }
