@@ -1,5 +1,7 @@
 package nostradamus
 
+import "encoding/xml"
+
 type Offices []Office
 
 type Office struct {
@@ -60,4 +62,79 @@ type Hour struct {
 	HourExit         DateTime `csv:"hour_exit"`
 	HourState        int      `csv:"hour_state"`
 	HourType         int      `csv:"hour_type"`
+}
+type Articles struct {
+	XMLName  xml.Name `xml:"nostradamus"`
+	Text     string   `xml:",chardata"`
+	Articles struct {
+		Text    string `xml:",chardata"`
+		Article []struct {
+			Text       string `xml:",chardata"`
+			ID         string `xml:"id,attr"`
+			GroupID    string `xml:"group_id,attr"`
+			SubgroupID string `xml:"subgroup_id,attr"`
+			OfficeID   string `xml:"office_id,attr"`
+			Name       string `xml:"name,attr"`
+			Price      string `xml:"price,attr"`
+			Tax        string `xml:"tax,attr"`
+			State      string `xml:"state,attr"`
+		} `xml:"article"`
+	} `xml:"articles"`
+}
+type ArticleSubGroups struct {
+	XMLName          xml.Name `xml:"nostradamus"`
+	Text             string   `xml:",chardata"`
+	Articlesubgroups struct {
+		Text  string `xml:",chardata"`
+		Group []struct {
+			Text     string `xml:",chardata"`
+			ID       string `xml:"id,attr"`
+			Parent   string `xml:"parent,attr"`
+			OfficeID string `xml:"office_id,attr"`
+			Name     string `xml:"name,attr"`
+		} `xml:"group"`
+	} `xml:"articlesubgroups"`
+}
+type ArticleGroups struct {
+	XMLName       xml.Name `xml:"nostradamus"`
+	Text          string   `xml:",chardata"`
+	Articlegroups struct {
+		Text  string `xml:",chardata"`
+		Group []struct {
+			Text     string `xml:",chardata"`
+			ID       string `xml:"id,attr"`
+			OfficeID string `xml:"office_id,attr"`
+			Name     string `xml:"name,attr"`
+		} `xml:"group"`
+	} `xml:"articlegroups"`
+}
+type Sales struct {
+	XMLName xml.Name `xml:"nostradamus"`
+	Text    string   `xml:",chardata"`
+	Sales   struct {
+		Text         string `xml:",chardata"`
+		Erase        string `xml:"erase,attr"`
+		BusinessDate string `xml:"business_date,attr"`
+		Sale         []struct {
+			Text       string `xml:",chardata"`
+			OfficeID   string `xml:"office_id,attr"`
+			Enter      string `xml:"enter,attr"`
+			TicketID   string `xml:"ticket_id,attr"`
+			Table      string `xml:"table,attr"`
+			Guests     string `xml:"guests,attr"`
+			EmployeeID string `xml:"employee_id,attr"`
+			StaffID    string `xml:"staff_id,attr"`
+			Product    []struct {
+				Text       string `xml:",chardata"`
+				Datetime   string `xml:"datetime,attr"`
+				PosID      string `xml:"pos_id,attr"`
+				ArticleID  string `xml:"article_id,attr"`
+				Ordering   string `xml:"ordering,attr"`
+				Amount     string `xml:"amount,attr"`
+				Value      string `xml:"value,attr"`
+				EmployeeID string `xml:"employee_id,attr"`
+				StaffID    string `xml:"staff_id,attr"`
+			} `xml:"product"`
+		} `xml:"sale"`
+	} `xml:"sales"`
 }

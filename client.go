@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/csv"
 	"encoding/json"
+	"encoding/xml"
 	"errors"
 	"fmt"
 	"io"
@@ -166,14 +167,12 @@ func (c *Client) GetEndpointURL(relative string, pathParams PathParams) url.URL 
 }
 
 func (c *Client) NewRequest(ctx context.Context, method string, URL url.URL, body interface{}) (*http.Request, error) {
-	// convert body struct to json
+	// convert body struct to xml
 	buf := new(bytes.Buffer)
-	// if body != nil {
-	// 	err := json.NewEncoder(buf).Encode(body)
-	// 	if err != nil {
-	// 		return nil, err
-	// 	}
-	// }
+	err := xml.NewEncoder(buf).Encode(body)
+	if err != nil {
+		return nil, err
+	}
 
 	// create new http request
 	req, err := http.NewRequest(method, URL.String(), buf)
@@ -190,6 +189,10 @@ func (c *Client) NewRequest(ctx context.Context, method string, URL url.URL, bod
 	// req.Header.Add("Content-Type", fmt.Sprintf("%s; charset=%s", c.MediaType(), c.Charset()))
 	// req.Header.Add("Accept", c.MediaType())
 	req.Header.Add("User-Agent", c.UserAgent())
+	req.Header.Add("api-key", c.Key())
+	req.Header.Add("nosclient", fmt.Sprintf("%s.nostradamus.nu", c.Customer()))
+	req.Header.Add("nosoffice", "1")
+	req.Header.Add("Content-Type", "application/xml")
 
 	return req, nil
 }

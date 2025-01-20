@@ -1,0 +1,10 @@
+github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751 h1:JYp7IbQjafoB+tBA3gMyHYHrpOtNuDiK/uB5uXxq5wM=
+github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
+github.com/aodin/date v0.0.0-20160219192542-c5f6146fc644 h1:aqktQkVrYfSYX8IdyN9N3LDcmIbZ06IWMlPLDtq++ys=
+github.com/aodin/date v0.0.0-20160219192542-c5f6146fc644/go.mod h1:Y67DEzoJLCDRgyUova4kxp9RUTTH0htwS2RpVj4ywPU=
+github.com/gocarina/gocsv v0.0.0-20240520201108-78e41c74b4b1 h1:FWNFq4fM1wPfcK40yHE5UO3RUdSNPaBC+j3PokzA6OQ=
+github.com/gocarina/gocsv v0.0.0-20240520201108-78e41c74b4b1/go.mod h1:5YoVOkjYAQumqlV356Hj3xeYh4BdZuLE0/nRkf2NKkI=
+github.com/gorilla/schema v1.4.1 h1:jUg5hUjCSDZpNGLuXQOgIWGdlgrIdYvgQ0wZtdK1M3E=
+github.com/gorilla/schema v1.4.1/go.mod h1:Dg5SSm5PV60mhF2NFaTV1xuYYj8tV8NOPRo4FggUMnM=
+gopkg.in/guregu/null.v3 v3.5.0 h1:xTcasT8ETfMcUHn0zTvIYtQud/9Mx5dJqD554SZct0o=
+gopkg.in/guregu/null.v3 v3.5.0/go.mod h1:E4tX2Qe3h7QdL+uZ3a0vqvYwKQsRSQKM5V4YltdgH9Y=
