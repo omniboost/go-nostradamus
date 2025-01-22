@@ -81,7 +81,7 @@ func (r CreateArticlesRequest) NewRequestBody() CreateArticlesRequestBody {
 	return CreateArticlesRequestBody{}
 }
 
-type CreateArticlesRequestBody Articles
+type CreateArticlesRequestBody CreateArticlesDto
 
 func (r *CreateArticlesRequest) RequestBody() *CreateArticlesRequestBody {
 	return &r.requestBody

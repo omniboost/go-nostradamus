@@ -63,24 +63,30 @@ type Hour struct {
 	HourState        int      `csv:"hour_state"`
 	HourType         int      `csv:"hour_type"`
 }
-type Articles struct {
-	XMLName  xml.Name `xml:"nostradamus"`
-	Text     string   `xml:",chardata"`
-	Articles struct {
-		Text    string `xml:",chardata"`
-		Article []struct {
-			Text       string `xml:",chardata"`
-			ID         string `xml:"id,attr"`
-			GroupID    string `xml:"group_id,attr"`
-			SubgroupID string `xml:"subgroup_id,attr"`
-			OfficeID   string `xml:"office_id,attr"`
-			Name       string `xml:"name,attr"`
-			Price      string `xml:"price,attr"`
-			Tax        string `xml:"tax,attr"`
-			State      string `xml:"state,attr"`
-		} `xml:"article"`
-	} `xml:"articles"`
+
+type NostradamusEnvelope struct {
+	XMLName xml.Name `xml:"nostradamus"`
 }
+
+type CreateArticlesDto struct {
+	NostradamusEnvelope
+
+	Articles Articles `xml:"articles>article"`
+}
+
+type Articles []Article
+
+type Article struct {
+	ID         string `xml:"id,attr"`
+	GroupID    string `xml:"group_id,attr"`
+	SubgroupID string `xml:"subgroup_id,attr"`
+	OfficeID   string `xml:"office_id,attr"`
+	Name       string `xml:"name,attr"`
+	Price      string `xml:"price,attr"`
+	Tax        string `xml:"tax,attr"`
+	State      string `xml:"state,attr"`
+}
+
 type ArticleSubGroups struct {
 	XMLName          xml.Name `xml:"nostradamus"`
 	Text             string   `xml:",chardata"`
