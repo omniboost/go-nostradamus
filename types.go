@@ -77,14 +77,14 @@ type CreateArticlesDto struct {
 type Articles []Article
 
 type Article struct {
-	ID         string `xml:"id,attr"`
-	GroupID    string `xml:"group_id,attr"`
-	SubgroupID string `xml:"subgroup_id,attr"`
-	OfficeID   string `xml:"office_id,attr"`
-	Name       string `xml:"name,attr"`
-	Price      string `xml:"price,attr"`
-	Tax        string `xml:"tax,attr"`
-	State      string `xml:"state,attr"`
+	ID         int     `xml:"id,attr"`
+	GroupID    int     `xml:"group_id,attr"`
+	SubgroupID int     `xml:"subgroup_id,attr"`
+	OfficeID   int     `xml:"office_id,attr"`
+	Name       string  `xml:"name,attr"`
+	Price      float64 `xml:"price,attr"`
+	Tax        float64 `xml:"tax,attr"`
+	State      int     `xml:"state,attr"`
 }
 
 type ArticleSubGroups struct {
