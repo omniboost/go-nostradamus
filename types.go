@@ -94,9 +94,9 @@ type ArticleSubGroups struct {
 		Text  string `xml:",chardata"`
 		Group []struct {
 			Text     string `xml:",chardata"`
-			ID       string `xml:"id,attr"`
-			Parent   string `xml:"parent,attr"`
-			OfficeID string `xml:"office_id,attr"`
+			ID       int    `xml:"id,attr"`
+			Parent   int    `xml:"parent,attr"`
+			OfficeID int    `xml:"office_id,attr"`
 			Name     string `xml:"name,attr"`
 		} `xml:"group"`
 	} `xml:"articlesubgroups"`
@@ -108,8 +108,8 @@ type ArticleGroups struct {
 		Text  string `xml:",chardata"`
 		Group []struct {
 			Text     string `xml:",chardata"`
-			ID       string `xml:"id,attr"`
-			OfficeID string `xml:"office_id,attr"`
+			ID       int    `xml:"id,attr"`
+			OfficeID int    `xml:"office_id,attr"`
 			Name     string `xml:"name,attr"`
 		} `xml:"group"`
 	} `xml:"articlegroups"`
@@ -119,27 +119,27 @@ type Sales struct {
 	Text    string   `xml:",chardata"`
 	Sales   struct {
 		Text         string `xml:",chardata"`
-		Erase        string `xml:"erase,attr"`
+		Erase        bool   `xml:"erase,attr"`
 		BusinessDate string `xml:"business_date,attr"`
 		Sale         []struct {
 			Text       string `xml:",chardata"`
-			OfficeID   string `xml:"office_id,attr"`
+			OfficeID   int    `xml:"office_id,attr"`
 			Enter      string `xml:"enter,attr"`
 			TicketID   string `xml:"ticket_id,attr"`
-			Table      string `xml:"table,attr"`
-			Guests     string `xml:"guests,attr"`
-			EmployeeID string `xml:"employee_id,attr"`
-			StaffID    string `xml:"staff_id,attr"`
+			Table      int    `xml:"table,attr"`
+			Guests     int    `xml:"guests,attr"`
+			EmployeeID int    `xml:"employee_id,attr"`
+			StaffID    int    `xml:"staff_id,attr"`
 			Product    []struct {
-				Text       string `xml:",chardata"`
-				Datetime   string `xml:"datetime,attr"`
-				PosID      string `xml:"pos_id,attr"`
-				ArticleID  string `xml:"article_id,attr"`
-				Ordering   string `xml:"ordering,attr"`
-				Amount     string `xml:"amount,attr"`
-				Value      string `xml:"value,attr"`
-				EmployeeID string `xml:"employee_id,attr"`
-				StaffID    string `xml:"staff_id,attr"`
+				Text       string  `xml:",chardata"`
+				Datetime   string  `xml:"datetime,attr"`
+				PosID      string  `xml:"pos_id,attr"`
+				ArticleID  string  `xml:"article_id,attr"`
+				Ordering   int     `xml:"ordering,attr"`
+				Amount     int     `xml:"amount,attr"`
+				Value      float64 `xml:"value,attr"`
+				EmployeeID int     `xml:"employee_id,attr"`
+				StaffID    int     `xml:"staff_id,attr"`
 			} `xml:"product"`
 		} `xml:"sale"`
 	} `xml:"sales"`

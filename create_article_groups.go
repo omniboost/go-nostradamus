@@ -99,11 +99,7 @@ func (r *CreateArticleGroupsRequest) NewResponseBody() *CreateArticleGroupsReque
 	return &CreateArticleGroupsRequestResponseBody{}
 }
 
-type CreateArticleGroupsRequestResponseBody struct {
-	Function struct {
-		Test string `xml:"test"`
-	} `xml:"function"`
-}
+type CreateArticleGroupsRequestResponseBody struct{}
 
 func (r *CreateArticleGroupsRequest) URL() *url.URL {
 	u := r.client.GetEndpointURL("", r.PathParams())

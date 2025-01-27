@@ -99,11 +99,7 @@ func (r *CreateSalesRequest) NewResponseBody() *CreateSalesRequestResponseBody {
 	return &CreateSalesRequestResponseBody{}
 }
 
-type CreateSalesRequestResponseBody struct {
-	Function struct {
-		Test string `xml:"test"`
-	} `xml:"function"`
-}
+type CreateSalesRequestResponseBody struct{}
 
 func (r *CreateSalesRequest) URL() *url.URL {
 	u := r.client.GetEndpointURL("", r.PathParams())
